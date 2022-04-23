@@ -60,16 +60,6 @@ class Buttons {
         style: FontThai.text14GreenNormal,
       ),
     );
-    // return ElevatedButton(
-    //   onPressed: onPressed,
-    //   style: ElevatedButton.styleFrom(
-    //     primary: Colors.green,
-    //   ),
-    //   child: Text(
-    //     "ตกลง",
-    //     style: FontThai.text16WhiteNormal,
-    //   ),
-    // );
   }
 
   static Widget btnExitApps({
@@ -87,19 +77,6 @@ class Buttons {
     );
   }
 
-  static Widget btnTextCreateShare({
-    required VoidCallback onPressed,
-  }) {
-    return TextButton.icon(
-      onPressed: onPressed,
-      label: Text(
-        "เพิ่มการแชร์",
-        style: FontThai.text16PinkNormal,
-      ),
-      icon: const Icon(Icons.add),
-    );
-  }
-
   static Widget iconCopy({required VoidCallback onPressed}) {
     return IconButton(
       onPressed: onPressed,
@@ -110,7 +87,7 @@ class Buttons {
       padding: const EdgeInsets.all(5),
       icon: const Icon(
         Icons.copy,
-        color: Colors.pink,
+        color: Colors.deepOrange,
       ),
     );
   }

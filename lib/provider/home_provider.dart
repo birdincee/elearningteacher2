@@ -4,6 +4,7 @@ import 'package:elearningteacher2/cost/field.dart';
 import 'package:elearningteacher2/model/class_room/class_room_model.dart';
 import 'package:elearningteacher2/model/model_user.dart';
 import 'package:elearningteacher2/page/account_edit_page.dart';
+import 'package:elearningteacher2/page/class_room/class_room_form_page.dart';
 import 'package:elearningteacher2/provider/account/account_head_provider.dart';
 import 'package:elearningteacher2/provider/class_room/class_room_provider.dart';
 import 'package:elearningteacher2/utility/dialog_create.dart';
@@ -105,5 +106,12 @@ class HomeProvider extends ClassRoomProvider {
     });
   }
 
-  onTapGotoClass(ClassRoomModel md) async {}
+  onTapGotoClass(ClassRoomModel md) async {
+    await Navigator.push(context, PageTransition(
+      type: PageTransitionType.fade,
+      curve: Curves.fastOutSlowIn,
+      child: ClassRoomFormPage(
+        sUIDDoc: md.sUID, md: md,),
+    ));
+  }
 }

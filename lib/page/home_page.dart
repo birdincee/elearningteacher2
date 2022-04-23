@@ -80,15 +80,12 @@ class HomePage extends StatelessWidget {
                                 onPressed: () => home.onPressedOpenCreate(
                                   account: account,
                                 ),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green.shade200,
-                                ),
                                 label: Text(
                                   "รายชื่อห้องเรียน",
                                   style: FontThai.text16BlackNormal,
                                 ),
                                 icon: const Icon(Icons.add,
-                                    color: Colors.green,
+                                    color: Colors.black,
                                 ),
                               ),
                             ),
@@ -106,9 +103,7 @@ class HomePage extends StatelessWidget {
                               if (snapshot.hasData) {
                                 var data = snapshot.data!;
                                 if (data.size == 0) {
-                                  // return Errors.noDataChildren();
-                                  return Errors
-                                      .noDataChildren(); // return const Text("NO DATA");
+                                  return Errors.noDataChildren();
                                 } else {
                                   return ListView.builder(
                                     itemCount: data.size,
@@ -161,8 +156,9 @@ class HomePage extends StatelessWidget {
       type: MaterialType.transparency,
       child: InkWell(
         onTap: () => home.onTapGotoClass(md),
-        highlightColor: Colors.green.shade300,
-        splashColor: Colors.green.shade200,
+        highlightColor: Colors.orange.shade200,
+        splashColor: Colors.orange.shade100,
+        borderRadius: BorderRadius.circular(10),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -186,7 +182,7 @@ class HomePage extends StatelessWidget {
                       Flexible(
                         child: Text(
                           md.sName,
-                          style: FontThai.text14GreenNormal,
+                          style: FontThai.text16OrangeBold,
                           overflow: TextOverflow.ellipsis,
                           softWrap: true,
                         ),
