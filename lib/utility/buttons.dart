@@ -33,7 +33,7 @@ class Buttons {
       onPressed: onPressed,
       child: Text(
         "สร้างบัญชีผู้ใช้ใหม่",
-        style: FontThai.text14PinkNormal,
+        style: FontThai.text14DeepOrangeNormal,
       ),
     );
   }

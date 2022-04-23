@@ -7,11 +7,9 @@ import 'package:elearningteacher2/provider/auth_provider.dart';
 import 'package:elearningteacher2/provider/home_provider.dart';
 import 'package:elearningteacher2/utility/buttons.dart';
 import 'package:elearningteacher2/utility/dialog_close_app.dart';
-import 'package:elearningteacher2/utility/dialog_create.dart';
 import 'package:elearningteacher2/utility/error_widget.dart';
 import 'package:elearningteacher2/utility/font_thai.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -74,6 +72,30 @@ class HomePage extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: ElevatedButton.icon(
+                                onPressed: () => home.onPressedOpenCreate(
+                                  account: account,
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.green.shade200,
+                                ),
+                                label: Text(
+                                  "รายชื่อห้องเรียน",
+                                  style: FontThai.text16BlackNormal,
+                                ),
+                                icon: const Icon(Icons.add,
+                                    color: Colors.green,
+                                ),
+                              ),
+                            ),
+                            const Spacer(),
+                          ],
+                        ),
+                        VarUI.h10,
                         StreamBuilder(
                           stream: home.getData,
                           builder: (_,
@@ -112,51 +134,6 @@ class HomePage extends StatelessWidget {
                               );
                             }
                           },
-                        ),
-                        VarUI.h10,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.green.shade100,
-                                  border: Border.all(
-                                    color: Colors.green.shade200,
-                                  ),
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    TextButton.icon(
-                                      onPressed: () => home.onPressedOpenCreate(
-                                        account: account,
-                                      ),
-                                      label: Text(
-                                        "รายชื่อห้องเรียน",
-                                        style: FontThai.text16BlackNormal,
-                                      ),
-                                      icon: const Icon(Icons.add,
-                                          color: Colors.green),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Container(),
-                            ),
-                            // Flexible(
-                            //   child: Buttons.btnTextCreateShare(
-                            //     // onPressed: () => home.onTapCreateChildren(
-                            //     //   accProv: account,
-                            //     // ),
-                            //   ),
-                            // ),
-                          ],
                         ),
                       ],
                     ),

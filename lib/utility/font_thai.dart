@@ -58,6 +58,16 @@ class FontThai {
       fontStyle: FontStyle.normal,
     ),
   );
+  static TextStyle text14DeepOrangeNormal = GoogleFonts.sarabun(
+    textStyle: const TextStyle(
+      color: Colors.deepOrange,
+      letterSpacing: 0.5,
+      fontWeight: FontWeight.normal,
+      fontSize: 14,
+      fontStyle: FontStyle.normal,
+    ),
+  );
+
   static TextStyle text14GreenNormal = GoogleFonts.sarabun(
     textStyle: const TextStyle(
       color: Colors.green,

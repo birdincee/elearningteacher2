@@ -133,7 +133,7 @@ class SignInPage extends StatelessWidget {
       width: 150,
       height: 150,
       child: Image.asset(
-        "assets/images/logoName.png",
+        "assets/images/logolearning.png",
         fit: BoxFit.cover,
         filterQuality: FilterQuality.high,
       ),

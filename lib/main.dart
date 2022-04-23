@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       color: Colors.white,
       theme: ThemeData(
-        primarySwatch: Colors.pink,
-        appBarTheme: AppBarTheme(
-          color: Colors.orangeAccent,
+        primarySwatch: Colors.deepOrange,
+        appBarTheme: const AppBarTheme(
+          color: Colors.deepOrange,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -32,9 +32,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
         textSelectionTheme: const TextSelectionThemeData(
-          cursorColor: Color(0xffFF1493),
-          selectionColor: Color(0xffFF69B4),
-          selectionHandleColor: Color(0xffFF69B4),
+          cursorColor: Colors.deepOrange,
+          selectionColor: Colors.orangeAccent,
+          selectionHandleColor: Colors.orangeAccent,
         ),
       ),
       home: const AuthGate(),

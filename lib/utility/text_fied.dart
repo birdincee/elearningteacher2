@@ -31,13 +31,13 @@ class TextFields {
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.pink,
+            color: Colors.deepOrange,
           ),
           borderRadius: BorderRadius.circular(20),
         ),
         icon: Icon(
           icon,
-          color: Colors.pink,
+          color: Colors.deepOrange,
           size: 20,
         ),
         hintText: hint,
@@ -73,7 +73,7 @@ class TextFields {
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.pink,
+            color: Colors.deepOrange,
           ),
           borderRadius: BorderRadius.circular(20),
         ),
@@ -107,7 +107,7 @@ class TextFields {
         enabledBorder: const OutlineInputBorder(),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
-          color: Colors.grey,
+          color: Colors.deepOrange,
         )),
         hintText: hint,
       ),

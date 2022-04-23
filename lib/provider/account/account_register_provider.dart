@@ -41,15 +41,15 @@ class AccountRegister extends AccountProvider {
         msg = sMsg;
       }
     }
-    if (txtPhone.text.isEmpty) {
-      String sMsg = "กรุณาระบุ เบอร์โทรศัพท์";
-      msg = sMsg;
-    } else {
-      if (txtPhone.text.length < 10) {
-        String sMsg = "กรุณา ระบุ เบอร์โทรศัพท์ ให้ครบ 10 หลัก";
-        msg = sMsg;
-      }
-    }
+    // if (txtPhone.text.isEmpty) {
+    //   String sMsg = "กรุณาระบุ เบอร์โทรศัพท์";
+    //   msg = sMsg;
+    // } else {
+    //   if (txtPhone.text.length < 10) {
+    //     String sMsg = "กรุณา ระบุ เบอร์โทรศัพท์ ให้ครบ 10 หลัก";
+    //     msg = sMsg;
+    //   }
+    // }
     if (txtDisplay.text.isEmpty) {
       String sMsg = "กรุณาระบุ ชื่อที่ใช้แสดง";
       msg = sMsg;
@@ -83,7 +83,7 @@ class AccountRegister extends AccountProvider {
       await DialogWait(context: context).close();
       if (sUID.isNotEmpty) {
         final ByteData bytes =
-            await rootBundle.load('assets/images/logolearning.jpg');
+            await rootBundle.load('assets/images/logolearning.png');
         final Uint8List list = bytes.buffer.asUint8List();
         String sImageBase64 = base64Encode(list);
         DateTime dateTime = DateTime.now();

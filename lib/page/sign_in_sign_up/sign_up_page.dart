@@ -26,7 +26,7 @@ class SignUpPage extends StatelessWidget {
           builder: (context, auth, accProv, _) {
             ScrollController scrollController = ScrollController();
             return Scaffold(
-              backgroundColor: const Color(0xffFFC0CB),
+              backgroundColor: Colors.orange.shade100,
               appBar: AppBar(
                 title: const Text(
                   "สร้างบัญชีผู้ใช้ใหม่",
@@ -160,7 +160,7 @@ class SignUpPage extends StatelessWidget {
       width: 150,
       height: 150,
       child: Image.asset(
-        "assets/images/logolearning.jpg",
+        "assets/images/logolearning.png",
         fit: BoxFit.cover,
         filterQuality: FilterQuality.high,
       ),

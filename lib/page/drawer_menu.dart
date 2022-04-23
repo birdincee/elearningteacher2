@@ -37,13 +37,13 @@ class DrawerMenu {
                   return const Text('Error in loading data');
                 }
               } else {
-                return SizedBox(
+                return const SizedBox(
                   width: double.infinity,
                   height: 100,
                   child: Center(
                     child: CircularProgressIndicator(
-                      color: Colors.pink,
-                      backgroundColor: Colors.pink.shade300,
+                      color: Colors.orangeAccent,
+                      backgroundColor: Colors.deepOrange,
                     ),
                   ),
                 );
@@ -84,7 +84,7 @@ class DrawerMenu {
       leading: Icon(
         iconData,
         size: 26,
-        color: Colors.pink,
+        color: Colors.orangeAccent,
       ),
       title: Text(
         sText,
@@ -102,8 +102,8 @@ class DrawerMenu {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.pink.shade600,
-            Colors.pink.shade800,
+            Colors.orange.shade700,
+            Colors.deepOrange,
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomCenter,
