@@ -63,13 +63,19 @@ class ClassRoomProvider with ChangeNotifier {
   Future<void> createHomeWork({
     required String sUIDDoc,
     required HomeWorkModel model,
-  })async{
+  }) async {
     List<dynamic> list = [];
     list.add(model.toJson());
     await classRoomRef.doc(sUIDDoc).update({
-      FieldMaster.sClassHomeWork : FieldValue.arrayUnion(list),
-    }).then((value){
+      FieldMaster.sClassHomeWork: FieldValue.arrayUnion(list),
+    }).then((value) {
       print('สร้างการบ้าน');
     });
+  }
+
+  Future<ClassRoomModel?> getByID({
+    required String sUIDDoc,
+  }) async {
+    return await classRoomRef.doc(sUIDDoc).get().then((value) => value.data());
   }
 }

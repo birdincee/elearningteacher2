@@ -1,8 +1,10 @@
 import 'package:elearningteacher2/cost/var_ui.dart';
 import 'package:elearningteacher2/model/class_room/class_room_model.dart';
+import 'package:elearningteacher2/model/class_room/home_work_model.dart';
 import 'package:elearningteacher2/provider/class_room/class_form_provider.dart';
 import 'package:elearningteacher2/utility/font_thai.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class ClassRoomFormPage extends StatelessWidget {
@@ -149,8 +151,46 @@ class ClassRoomFormPage extends StatelessWidget {
           ],
         ),
       );
-    }else{
-      return Container();
+    }else {
+      return Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+        decoration: BoxDecoration(
+          color: Colors.orange.shade100,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          children: [
+            _buttonAddHw(prov),
+            VarUI.h10,
+            SizedBox(
+              width: double.infinity,
+              height: 100,
+              child: Scrollbar(
+                controller: prov.scrollList,
+                child: ListView.builder(
+                  itemCount: prov.listHw.length,
+                  shrinkWrap: true,
+                  controller: prov.scrollList,
+                  scrollDirection: Axis.horizontal,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (_, int index) {
+                    return _item(
+                      index: index,
+                      prov: prov,
+                      md: prov.listHw[index],
+                    );
+                  },
+                ),
+              ),
+            ),
+            VarUI.h10,
+          ],
+        ),
+      );
     }
   }
 
@@ -160,13 +200,109 @@ class ClassRoomFormPage extends StatelessWidget {
       child: Row(
         children: [
           ElevatedButton(
-            onPressed: ()=> prov.addHomework(),
+            onPressed: () => prov.addHomework(),
             child: Text(
               'เพิ่มการบ้าน',
               style: FontThai.text16BlackBold,
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _item({
+    required int index,
+    required HomeWorkModel md,
+    required ClassFormProvider prov,
+  }) {
+    int i = index;
+    var formatDate = DateFormat("dd/MM/yyyy");
+    DateTime dateCrate = DateTime.parse(md.sDateCreate);
+    String sDateCreate = formatDate.format(dateCrate);
+    DateTime dateFinal = DateTime.parse(md.sDateFinal);
+    String sDateFinal = formatDate.format(dateFinal);
+    return Container(
+      width: 150,
+      margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+      padding: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: () {},
+          borderRadius: BorderRadius.circular(10),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: RichText(
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                      text: TextSpan(
+                        text: 'หัวข้อ : ',
+                        style: FontThai.text14BlackNormal,
+                        children: [
+                          TextSpan(
+                            text: md.sNameTitle,
+                            style: FontThai.text14BlackNormal,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: RichText(
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                      text: TextSpan(
+                        text: 'วันที่สั่ง : ',
+                        style: FontThai.text14BlackNormal,
+                        children: [
+                          TextSpan(
+                            text: sDateCreate,
+                            style: FontThai.text14BlackNormal,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: RichText(
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                      text: TextSpan(
+                        text: 'วันที่ส่ง : ',
+                        style: FontThai.text14BlackNormal,
+                        children: [
+                          TextSpan(
+                            text: sDateFinal,
+                            style: FontThai.text14BlackNormal,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

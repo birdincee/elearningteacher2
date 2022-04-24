@@ -11,7 +11,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 class ClassFormProvider extends ClassRoomProvider {
   final BuildContext context;
   final String sUIDDoc;
-  final ClassRoomModel md;
+  ClassRoomModel md;
 
   ClassFormProvider({
     required this.context,
@@ -20,23 +20,26 @@ class ClassFormProvider extends ClassRoomProvider {
   }) {
     init();
   }
+
   bool bFirst = true;
   List<HomeWorkModel> listHw = [];
 
   TextEditingController textDes = TextEditingController();
+  late ScrollController scrollList;
 
   init() async {
-    if(bFirst){
+    if (bFirst) {
+      scrollList = ScrollController(initialScrollOffset: 0);
       textDes.text = md.sDes;
-      await checkHomeWork();
+      await checkHomeWork(md.listHomeWork);
       bFirst = false;
       notifyListeners();
     }
   }
 
-  Future<void> checkHomeWork() async {
-    if (md.listHomeWork.isNotEmpty) {
-      for (var mData in md.listHomeWork) {
+  Future<void> checkHomeWork(List<dynamic> list) async {
+    if (list.isNotEmpty) {
+      for (var mData in list) {
         Map<String, dynamic> map = HashMap.from(mData);
         HomeWorkModel model = HomeWorkModel();
         model.formJson(json: map);
@@ -69,11 +72,19 @@ class ClassFormProvider extends ClassRoomProvider {
       curve: Curves.fastOutSlowIn,
       duration: const Duration(milliseconds: 500),
     );
-    if(bResult == true){
+    if (bResult == true) {
       ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBarMsg.snackBarMsg(sText: "สร้างการบ้านสำเร็จ"),
       );
+      await reQueryData();
     }
+  }
+
+  reQueryData() async {
+    md = (await getByID(sUIDDoc: sUIDDoc))!;
+    listHw.clear();
+    checkHomeWork(md.listHomeWork);
+    notifyListeners();
   }
 }

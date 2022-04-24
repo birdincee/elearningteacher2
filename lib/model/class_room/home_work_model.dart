@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:typed_data';
 
 import 'package:elearningteacher2/cost/field.dart';
@@ -13,10 +14,20 @@ class HomeWorkModel {
   formJson({required Map<String, dynamic> json})async{
     sUID = json[FieldMaster.sHWUID] ?? '';
     sNameTitle = json[FieldMaster.sHWName] ?? '';
-    listSimpleHW = json[FieldMaster.sHWSimpleHw] ?? [];
     sDateCreate = json[FieldMaster.sHWDateCrate] ?? '';
     sDateFinal = json[FieldMaster.sHWDateFinal] ?? '';
-    listStudentHw = json[FieldMaster.sHWStudent] ?? [];
+    dynamic tempSimpleHw = json[FieldMaster.sHWSimpleHw];
+    if (tempSimpleHw != null) {
+      for (var simple in tempSimpleHw) {
+        listSimpleHW.add(HashMap.from(simple));
+      }
+    }
+    dynamic tempStudentHw = json[FieldMaster.sHWStudent];
+    if (tempStudentHw != null) {
+      for (var student in tempStudentHw) {
+        listStudentHw.add(HashMap.from(student));
+      }
+    }
   }
 
   Map<String,dynamic> toJson() {
