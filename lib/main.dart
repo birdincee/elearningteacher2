@@ -36,6 +36,11 @@ class MyApp extends StatelessWidget {
           selectionColor: Colors.orangeAccent,
           selectionHandleColor: Colors.orangeAccent,
         ),
+        scrollbarTheme: const ScrollbarThemeData(
+          interactive: true,
+          isAlwaysShown: true,
+          radius: Radius.circular(10),
+        ),
       ),
       home: const AuthGate(),
     );

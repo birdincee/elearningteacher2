@@ -58,7 +58,7 @@ class AccountRegister extends AccountProvider {
       print(msg);
       removeSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBarMsg.snackBarMsgSignIN(sText: msg),
+        SnackBarMsg.snackBarMsg(sText: msg),
       );
     } else {
       removeSnackBar();

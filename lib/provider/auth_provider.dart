@@ -44,13 +44,13 @@ class Auth with ChangeNotifier {
         String sMsg = "The password provided is too weak.";
         removeSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBarMsg.snackBarMsgSignIN(sText: sMsg),
+          SnackBarMsg.snackBarMsg(sText: sMsg),
         );
       } else if (e.code == 'email-already-in-use') {
         String sMsg = "The account already exists for that email.";
         removeSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBarMsg.snackBarMsgSignIN(sText: sMsg),
+          SnackBarMsg.snackBarMsg(sText: sMsg),
         );
       }
     } catch (e) {
@@ -85,7 +85,7 @@ class Auth with ChangeNotifier {
       print(msg);
       removeSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBarMsg.snackBarMsgSignIN(sText: msg),
+        SnackBarMsg.snackBarMsg(sText: msg),
       );
     } else {
       removeSnackBar();
@@ -128,13 +128,13 @@ class Auth with ChangeNotifier {
         String sMsg = "ไม่มี Email นี้ในระบบ";
         removeSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBarMsg.snackBarMsgSignIN(sText: sMsg),
+          SnackBarMsg.snackBarMsg(sText: sMsg),
         );
       } else if (e.code == 'wrong-password') {
         String sMsg = "รหัสผ่านไม่ถูกต้อง";
         removeSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBarMsg.snackBarMsgSignIN(sText: sMsg),
+          SnackBarMsg.snackBarMsg(sText: sMsg),
         );
       }
     }

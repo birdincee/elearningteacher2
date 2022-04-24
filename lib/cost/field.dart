@@ -18,29 +18,23 @@ class FieldMaster {
   static String studentEmail = "student_email";
 
   static String sClassName = 'class_name'; // String
+  static String sClassDes = 'class_des'; // String
   static String sClassUID = 'class_uid'; // String
   static String sClassUIDTeach = 'class_uid_teach'; // String
   static String sClassUIDStudent = 'class_uid_Student'; // List String
   static String sClassDateCreate = 'class_crate_date'; // String
   static String sClassHomeWork = 'class_home_work'; // ListString
 
-// //Users
-// static String fieldUserUID = "uid";
-// static String fieldUserFullName = "fullName";
-// static String fieldUserEmail = "email";
-// static String fieldUserPhoto = "photoInfo";
-// static String fieldUserPhone = "phoneNumber";
-// static String fieldUserDateRegister = "sDateRegister";
-// static String fieldUserGeoPoint = "geoPoint";
-// static String fieldUserPremium = "bPremium";
-// static String fieldUserGCM = "sGCMToken";
-//
-// static String childMyUID = "sChildUID";
-// static String childParentUID = "sParentUID";
-// static String childNameDisplay = "sChildNameDisplay";
-// static String childImage = "sChildImage";
-// static String childPhone = "sChildPhone";
-// static String childDate = "sDateCreate";
-// static String childGeo = "childGeoPoint";
+  static String sHWUID = 'hw_uid';
+  static String sHWName = 'hw_name';
+  static String sHWSimpleHw = 'hw_simple_hw'; // list
+  static String sHWDateCrate = 'hw_date_crate';
+  static String sHWDateFinal = 'hw_date_final';
+  static String sHWStudent = 'hw_student'; // list
+
+
+  static String sFileName = 'file_name'; // ชื่อไฟล์งาน
+  static String sFileByte = 'file_byte'; // ไฟล์
+  static String sFilePath = 'file_path'; // ไฟล์
 
 }

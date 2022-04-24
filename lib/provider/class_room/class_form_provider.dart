@@ -1,8 +1,14 @@
-import 'package:elearningteacher2/model/class_room/class_room_model.dart';
-import 'package:elearningteacher2/provider/class_room/class_room_provider.dart';
-import 'package:flutter/material.dart';
+import 'dart:collection';
 
-class ClassFormProvider extends ClassRoomProvider{
+import 'package:elearningteacher2/model/class_room/class_room_model.dart';
+import 'package:elearningteacher2/model/class_room/home_work_model.dart';
+import 'package:elearningteacher2/page/class_room/add_home_work_dialog.dart';
+import 'package:elearningteacher2/provider/class_room/class_room_provider.dart';
+import 'package:elearningteacher2/utility/snack_msg.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+
+class ClassFormProvider extends ClassRoomProvider {
   final BuildContext context;
   final String sUIDDoc;
   final ClassRoomModel md;
@@ -11,11 +17,63 @@ class ClassFormProvider extends ClassRoomProvider{
     required this.context,
     required this.sUIDDoc,
     required this.md,
-  }){
+  }) {
     init();
   }
+  bool bFirst = true;
+  List<HomeWorkModel> listHw = [];
 
-  init()async{
+  TextEditingController textDes = TextEditingController();
 
+  init() async {
+    if(bFirst){
+      textDes.text = md.sDes;
+      await checkHomeWork();
+      bFirst = false;
+      notifyListeners();
+    }
+  }
+
+  Future<void> checkHomeWork() async {
+    if (md.listHomeWork.isNotEmpty) {
+      for (var mData in md.listHomeWork) {
+        Map<String, dynamic> map = HashMap.from(mData);
+        HomeWorkModel model = HomeWorkModel();
+        model.formJson(json: map);
+        if (model.sUID.isEmpty) {
+          continue;
+        } else {
+          listHw.add(model);
+        }
+      }
+    }
+    print(listHw.length);
+  }
+
+  void onSubmitEditDes(String val)async{
+    if(textDes.text.isNotEmpty){
+      String sDes = textDes.text.trim();
+      await upDateDes(sUIDDoc: sUIDDoc, sDes: sDes);
+    }
+    print('Complete ${textDes.text}');
+  }
+
+  void addHomework()async{
+    var bResult = await showAnimatedDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return AddHomeWork(sUIDDoc: sUIDDoc,);
+        },
+      animationType: DialogTransitionType.scale,
+      curve: Curves.fastOutSlowIn,
+      duration: const Duration(milliseconds: 500),
+    );
+    if(bResult == true){
+      ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBarMsg.snackBarMsg(sText: "สร้างการบ้านสำเร็จ"),
+      );
+    }
   }
 }

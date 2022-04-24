@@ -31,8 +31,8 @@ class DialogWait {
               children: [
                 VarUI.h10,
                 CircularProgressIndicator(
-                  color: Colors.pink,
-                  backgroundColor: Colors.pink.shade300,
+                  color: Colors.deepOrange,
+                  backgroundColor: Colors.orange.shade300,
                 ),
                 VarUI.h10,
               ],

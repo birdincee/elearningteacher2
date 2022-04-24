@@ -69,13 +69,13 @@ class TextFields {
         isDense: true,
         contentPadding: const EdgeInsets.all(8),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: Colors.deepOrange,
           ),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
         ),
         prefixIcon: Icon(iconData),
         hintText: hint,
@@ -113,4 +113,5 @@ class TextFields {
       ),
     );
   }
+
 }

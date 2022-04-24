@@ -101,7 +101,7 @@ class HomeProvider extends ClassRoomProvider {
       print('copied');
       ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBarMsg.snackBarMsgSignIN(sText: "Copied สำเร็จ"),
+        SnackBarMsg.snackBarMsg(sText: "Copied สำเร็จ"),
       );
     });
   }
